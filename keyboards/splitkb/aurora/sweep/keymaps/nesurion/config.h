@@ -1,0 +1,7 @@
+// Thumb Combos
+#define COMBO_COUNT 8
+#define COMBO_TERM 200
+#define EXTRA_SHORT_COMBOS
+
+#define IGNORE_MOD_TAP_INTERRUPT
+#define QUICK_TAP_TERM 0
