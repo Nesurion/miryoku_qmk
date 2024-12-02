@@ -12,19 +12,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         [3] = LAYOUT_split_3x5_2(KC_EXLM, KC_AT, KC_LCBR, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_RCBR, KC_AMPR, KC_VOLU, KC_TILD, KC_NO, KC_LPRN, KC_BSLS, KC_MINS, KC_EQL, KC_PSLS, KC_RPRN, KC_DQUO, KC_QUOT, KC_GRV, KC_NO, KC_LBRC, KC_PIPE, KC_NO, KC_ASTR, KC_MPLY, KC_RBRC, KC_MFFD, KC_VOLD, KC_TAB, KC_SPC, KC_NO, KC_BSPC)
 };
 
-const uint16_t PROGMEM umlaut_a[] = {LSFT_T(KC_A), KC_Q, COMBO_END};
-const uint16_t PROGMEM umlaut_s[] = {LCTL_T(KC_S), KC_W, COMBO_END};
-const uint16_t PROGMEM umlaut_u[] = {RGUI_T(KC_J), KC_U, COMBO_END};
-const uint16_t PROGMEM umlaut_o[] = {RSFT_T(KC_SCLN), KC_O, COMBO_END};
-const uint16_t PROGMEM thumbcombos_base_left[] = {LT(1,KC_TAB), LT(3,KC_SPC), COMBO_END};
-const uint16_t PROGMEM thumbcombos_base_right[] = {LT(2,KC_ENT), KC_BSPC, COMBO_END};
+// const uint16_t PROGMEM umlaut_a[] = {LSFT_T(KC_A), KC_Q, COMBO_END};
+// const uint16_t PROGMEM umlaut_s[] = {LCTL_T(KC_S), KC_W, COMBO_END};
+// const uint16_t PROGMEM umlaut_u[] = {RGUI_T(KC_J), KC_U, COMBO_END};
+// const uint16_t PROGMEM umlaut_o[] = {RSFT_T(KC_SCLN), KC_O, COMBO_END};
+const uint16_t PROGMEM thumbcombos_base_left[] = {LT(1,KC_TAB), LT(2,KC_SPC), COMBO_END};
+const uint16_t PROGMEM thumbcombos_base_right[] = {LT(3,KC_ENT), KC_BSPC, COMBO_END};
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(thumbcombos_base_left, KC_ESC),
     COMBO(thumbcombos_base_right, KC_DEL)
-    // COMBO(umlaut_a, SEND_STRING(SS_RALT("u") "a")),
-    // COMBO(umlaut_s, SEND_STRING(SS_RALT("s"))),
-    // COMBO(umlaut_u, SEND_STRING(SS_RALT("u") "u")),
-    // COMBO(umlaut_o, SEND_STRING(SS_RALT("u") "o")),
 };
 
 // Disable status LED
