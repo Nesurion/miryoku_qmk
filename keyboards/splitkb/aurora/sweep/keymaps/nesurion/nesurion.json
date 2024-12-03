@@ -3,7 +3,7 @@
     "notes": "Mein tolles Layout",
     "documentation": "\"This file is a QMK Configurator export. You can import this at <https://config.qmk.fm>. It can also be used directly with QMK's source code.\n\nTo setup your QMK environment check out the tutorial: <https://docs.qmk.fm/#/newbs>\n\nYou can convert this file to a keymap.c using this command: `qmk json2c {keymap}`\n\nYou can compile this keymap using this command: `qmk compile {keymap}`\"\n",
     "keyboard": "splitkb/aurora/sweep/rev1",
-    "keymap": "splitkb_aurora_sweep_rev1_nesurion",
+    "keymap": "splitkb_aurora_sweep_rev1_splitkb_aurora_sweep_rev1_nesurion",
     "layout": "LAYOUT_split_3x5_2",
     "layers": [
         [
@@ -126,7 +126,7 @@
             "KC_AMPR",
             "KC_VOLU",
             "KC_TILD",
-            "KC_NO",
+            "KC_UNDS",
             "KC_LPRN",
             "KC_BSLS",
             "KC_MINS",
