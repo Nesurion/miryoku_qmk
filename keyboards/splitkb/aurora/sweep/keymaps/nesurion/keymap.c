@@ -8,20 +8,54 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         [0] = LAYOUT_split_3x5_2(KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, LSFT_T(KC_A), LCTL_T(KC_S), LALT_T(KC_D), LGUI_T(KC_F), KC_G, KC_H, RGUI_T(KC_J), RALT_T(KC_K), RCTL_T(KC_L), RSFT_T(KC_SCLN), KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, LT(1,KC_TAB), LT(2,KC_SPC), LT(3,KC_ENT), KC_BSPC),
         [1] = LAYOUT_split_3x5_2(LGUI(KC_GRV), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_MINS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_QUOT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, LALT(KC_LEFT), KC_PGDN, KC_PGUP, LALT(KC_RGHT), KC_NO, KC_NO, KC_SPC, KC_ENT, KC_BSPC),
-        [2] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PSLS, KC_7, KC_8, KC_9, KC_PMNS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO, KC_COLN, KC_4, KC_5, KC_6, KC_PPLS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ASTR, KC_1, KC_2, KC_3, KC_PDOT, KC_NO, KC_NO, KC_P0, KC_BSPC),
-        [3] = LAYOUT_split_3x5_2(KC_EXLM, KC_AT, KC_LCBR, KC_HASH, KC_DLR, KC_PERC, KC_CIRC, KC_RCBR, KC_AMPR, KC_VOLU, KC_TILD, KC_UNDS, KC_LPRN, KC_BSLS, KC_MINS, KC_EQL, KC_PSLS, KC_RPRN, KC_DQUO, KC_QUOT, KC_GRV, KC_NO, KC_LBRC, KC_PIPE, KC_PLUS, KC_ASTR, KC_MPLY, KC_RBRC, KC_MFFD, KC_VOLD, KC_TAB, KC_SPC, KC_NO, KC_BSPC)
+        [2] = LAYOUT_split_3x5_2(KC_NO, KC_NO, KC_NO, KC_F11, KC_F12, KC_PSLS, KC_7, KC_8, KC_9, KC_PMNS, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO, KC_COLN, KC_4, KC_5, KC_6, KC_PPLS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ASTR, KC_1, KC_2, KC_3, KC_PDOT, KC_NO, KC_NO, KC_P0, KC_BSPC),
+        [3] = LAYOUT_split_3x5_2(KC_EXLM, KC_AT, KC_LCBR, KC_HASH, KC_CIRC, KC_DLR, KC_PERC, KC_RCBR, KC_AMPR, KC_VOLU, KC_TILD, KC_UNDS, KC_LPRN, KC_BSLS, KC_MINS, KC_EQL, KC_PSLS, KC_RPRN, KC_DQUO, KC_QUOT, KC_GRV, KC_NO, KC_LBRC, KC_PIPE, KC_PLUS, KC_ASTR, KC_MPLY, KC_RBRC, KC_MFFD, KC_VOLD, KC_TAB, KC_SPC, KC_NO, KC_BSPC)
 };
 
-// const uint16_t PROGMEM umlaut_a[] = {LSFT_T(KC_A), KC_Q, COMBO_END};
-// const uint16_t PROGMEM umlaut_s[] = {LCTL_T(KC_S), KC_W, COMBO_END};
-// const uint16_t PROGMEM umlaut_u[] = {RGUI_T(KC_J), KC_U, COMBO_END};
-// const uint16_t PROGMEM umlaut_o[] = {RSFT_T(KC_SCLN), KC_O, COMBO_END};
-const uint16_t PROGMEM thumbcombos_base_left[] = {LT(1,KC_TAB), LT(2,KC_SPC), COMBO_END};
-const uint16_t PROGMEM thumbcombos_base_right[] = {LT(3,KC_ENT), KC_BSPC, COMBO_END};
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(thumbcombos_base_left, KC_ESC),
-    COMBO(thumbcombos_base_right, KC_DEL)
+enum custom_keycodes {
+    X_AE = SAFE_RANGE,
+    X_OE,
+    X_UE,
 };
+
+enum combo_events {
+    COMBO_ESC,
+    COMBO_DEL,
+    // COMBO_AE,
+    // COMBO_OE,
+    // COMBO_UE,
+};
+
+const uint16_t PROGMEM thumbcombos_base_left[] = {LT(1,KC_TAB), LT(2,KC_SPC), COMBO_END}; // Left Tumb Combo for Escape
+const uint16_t PROGMEM thumbcombos_base_right[] = {LT(3,KC_ENT), KC_BSPC, COMBO_END}; // Right Tumb Combo for Delete
+// const uint16_t PROGMEM ae_combo[] = {LSFT_T(KC_A), KC_E, COMBO_END}; // Press 'A' + 'E'
+// const uint16_t PROGMEM oe_combo[] = {KC_O, KC_E, COMBO_END}; // Press 'O' + 'E'
+// const uint16_t PROGMEM ue_combo[] = {KC_U, KC_E, COMBO_END}; // Press 'U' + 'E'
+
+combo_t key_combos[COMBO_COUNT] = {
+    [COMBO_ESC] = COMBO(thumbcombos_base_left, KC_ESC),
+    [COMBO_DEL] = COMBO(thumbcombos_base_right, KC_DEL),
+    // [COMBO_AE] = COMBO(ae_combo, X_AE), // Output ä
+    // [COMBO_OE] = COMBO(oe_combo, X_OE), // Output ö
+    // [COMBO_UE] = COMBO(ue_combo, X_UE), // Output ü
+};
+
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//     if (record->event.pressed) {
+//         switch (keycode) {
+//             case X_AE:
+//                 send_string(SS_LALT("u") "a"); // ⌥ + U, then A = ä
+//                 return false;
+//             case X_OE:
+//                 send_string(SS_LALT("u") "o"); // ⌥ + U, then O = ö
+//                 return false;
+//             case X_UE:
+//                 send_string(SS_LALT("u") "u"); // ⌥ + U, then U = ü
+//                 return false;
+//         }
+//     }
+//     return true;
+// }
 
 // Disable status LED
 void keyboard_pre_init_user(void) {
